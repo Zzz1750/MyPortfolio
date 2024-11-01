@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrollable Website Template</title>
+    <style>
+        /* Basic styling */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Button styling */
+        .menu-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #333;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            z-index: 10; /* Increased z-index for better accessibility */
+        }
+
+        /* Dropdown menu styling */
+        .dropdown {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed positioning to stay visible */
+            top: 60px; /* Below the button */
+            left: 20px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 9; /* Set below the button */
+        }
+
+        .dropdown a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+        }
+
+        .dropdown a:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Section styling */
+        .section {
+            padding: 100px 20px;
+            height: 100vh; /* Full viewport height */
+        }
+
+        #section1 { background-color: #f0f8ff; }
+        #section2 { background-color: #faebd7; }
+        #section3 { background-color: #f5f5dc; }
+        #section4 { background-color: #e6e6fa; }
+        #section5 { background-color: #ffe4e1; }
+    </style>
+</head>
+<body>
+
+    <!-- Menu Button -->
+    <button class="menu-button" onclick="toggleDropdown()">Menu</button>
+
+    <!-- Dropdown Menu -->
+    <div class="dropdown" id="dropdownMenu">
+        <a href="#section1" onclick="toggleDropdown()">Home</a>
+        <a href="#section2" onclick="toggleDropdown()">About</a>
+        <a href="#section3" onclick="toggleDropdown()">Services</a>
+        <a href="#section4" onclick="toggleDropdown()">Portfolio</a>
+        <a href="#section5" onclick="toggleDropdown()">Contact</a>
+    </div>
+
+    <!-- Content Sections -->
+    <div id="section1" class="section">
+        <h1>Home</h1>
+        <p>Welcome to our website! Here is some introductory content.</p>
+    </div>
+
+    <div id="section2" class="section">
+        <h1>About</h1>
+        <p>Learn more about us and our journey in this section.</p>
+    </div>
+
+    <div id="section3" class="section">
+        <h1>Services</h1>
+        <p>Check out the services we offer and how we can help you.</p>
+    </div>
+
+    <div id="section4" class="section">
+        <h1>Portfolio</h1>
+        <p>Take a look at some of our past projects and accomplishments.</p>
+    </div>
+
+    <div id="section5" class="section">
+        <h1>Contact</h1>
+        <p>Get in touch with us for more information.</p>
+    </div>
+
+    <script>
+        // Scroll to the Home section on load
+        window.onload = function() {
+            document.getElementById('section1').scrollIntoView();
+        };
+
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdownMenu');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Close dropdown if clicked outside
+        window.onclick = function(event) {
+            if (!event.target.matches('.menu-button') && !event.target.closest('.dropdown')) {
+                const dropdown = document.getElementById('dropdownMenu');
+                if (dropdown.style.display === 'block') {
+                    dropdown.style.display = 'none';
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

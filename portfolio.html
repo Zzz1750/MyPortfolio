@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antony Zharon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./name.css">
+    <link rel="stylesheet" href="./portfolio.css">
+    <style>
+        @media screen and (max-width: 768px) {
+            #greeting {
+                font-size: 40px;
+            }
+            .star{
+                width: 1px;
+                height: 1px;
+            }
+            #name{
+                font-size: 38px;
+            }
+            #front_page_hello{
+                font-size: 30px;
+            }
+            #front_page_tag{
+                font-size: 20px;
+            }
+            #heading_displayer{
+                top: 30%;
+                left: 30%;
+            }
+            #front_page_button{
+                top: 60%;
+                font-size: 12px;
+                padding: 8px 13px 8px 13px;
+            }
+        }  
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: moveDown linear infinite;
+            opacity: 0.7;
+            z-index: 0;
+            pointer-events: none;
+            top: 0;
+        }
+
+        #front_page_button {
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px 30px;
+            color: rgba(255, 255, 255, 0.8);
+            background-color: black;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 35px;
+            font-family: 'Spartan', sans-serif;
+            cursor: pointer;
+            z-index: 5;
+            text-align: center;
+            transition: all 0.5s;
+            display: none;
+            animation: front_page_button_blink 1s infinite alternate;
+        }
+        
+        @keyframes front_page_button_blink {
+            0% { box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.5); }
+            100% { box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5); }
+        }
+        
+        #front_page_button:hover{
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.95);
+        }
+        #front_page_button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+          }
+          
+        #front_page_button span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+        }
+          
+        #front_page_button:hover span {
+        padding-right: 20px;
+        }
+        
+        #front_page_button:hover span:after {
+        opacity: 1;
+        right: 0;
+        }
+        #rocket_design{
+            transform: translate(-50%,-50%);
+            width: 400px;
+            z-index: 15;
+            filter: invert(100%);
+            transition: all 2s ease-in-out;
+            position: absolute;
+        }  
+        #rocket_design.animate_rocket{
+            animation: rocket_design_vibrater 3s infinite alternate ease-in-out;
+        }
+        #rocket_design_mover{
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            opacity: 0;
+            transition: opacity 0.2s ease, transform 0.5s ease;
+        }
+        #rocket_design_mover.animate_rocket_mover {
+            opacity: 0.2;
+            transform: translateY(-40px);
+        }
+        #rocket_design_mover.animate_rocket_exit {
+            transition: transform 4s ease;
+            transform: translateY(-100vh);
+        }
+        @keyframes rocket_design_vibrater{
+            0%{
+                transform: translate(-25px,5px);
+            }
+            100%{
+                transform: translate(-40px,-5px);
+            }
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.5s ease;
+        }
+
+        .section {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            position: relative;
+        }
+        #front_page {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <!-- front_page -->
+     <div id="front_page">
+        <div id="intro">
+            <h1 id="greeting"></h1>
+        </div>
+
+        <div class="heading" id="heading_displayer">
+            <div>
+                <p class="slide-up" id="front_page_hello"><span>I am,</span></p>
+            </div>
+            <div>
+                <p class="slide-up" id="name"><span class="white">Antony Zharon</span></p>
+            </div>
+            <div>
+                <p class="slide-up" id="front_page_tag">#2024</p>
+            </div>
+        </div>
+
+        <button id="front_page_button"><span>take tour</span></button>
+    </div>
+
+    <div id="rocket_design_mover">
+        <img id="rocket_design" src="./images/rocket.png" alt="rocket_design">
+    </div>
+
+    <script>
+        const numberOfStars = 100;
+        const frontPage = document.getElementById('front_page');
+
+        for (let i = 0; i < numberOfStars; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+
+            const x = Math.random() * frontPage.offsetWidth;
+            star.style.left = `${x}px`;
+
+            const duration = Math.random() * 10 + 10; 
+            star.style.animationDuration = `${duration}s`;
+
+            const delay = Math.random() * duration;
+            star.style.animationDelay = `-${delay}s`;
+
+            frontPage.appendChild(star);
+        }
+    </script>
+    <script src="./portfolio.js"></script>
+</body>
+</html>

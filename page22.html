@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Antony Zharon</title>
+    <style>
+     
+        
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: #f5f5f5;
+            overflow-x: hidden;
+            cursor: url('./images/cursor.png') 16 16, auto;
+        }
+
+        .star-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: fall linear infinite;
+        }
+
+        section {
+            height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            
+            background-color: transparent;
+            z-index: 1;
+            position: relative;
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+            background-color: #000000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #444;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #666;
+        }
+
+        @supports (scrollbar-color: auto) {
+            html {
+                scrollbar-width: thin;
+                scrollbar-color: #444 black;
+            }
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100vh); }
+            100% { transform: translateY(100vh); } 
+        }
+        a, #myimage{
+            cursor: url('./images/cursor2.png') 16 16, auto;
+        }
+
+        #header {
+            position: fixed;
+            height: 6%;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px; 
+            z-index: 2;
+        }
+        
+        #mylogo {
+            height: 20px;
+            width: auto; 
+            opacity: 0.8;
+        }
+        
+
+        .header_elements{
+            color: white;
+            font-family: "Chakra Petch", sans-serif;
+            opacity: 0.8;
+            text-decoration: none;
+        }
+        
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        #myimage {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotateZ(3deg);
+            width: 25%;      
+            max-width: none;     
+            height: auto;         
+            opacity: 0.9;
+            border-radius: 30px;
+        }
+        
+        
+        
+        
+        
+
+        #name1_section1 {
+            position: absolute;
+            top: 25%;
+            left: 40%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            font-size: 150px;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+        }
+
+        #name2_section1 {
+            position: absolute;
+            top: 60%;
+            left: 65%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            font-size: 150px;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+        }
+
+        #background_section1{
+            position: absolute;
+            width: 1400px;
+            filter: invert(100%);
+            opacity: 0.05;
+        }
+
+        #section1_sat{
+            position: absolute;
+            filter: invert(100%);
+            width: 20%;
+            left: 20%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        @media (max-width: 600px) { 
+            #myimage {
+                width: 70%;
+                max-width: none; 
+            }
+            #name1_section1{
+                top: 30%;
+            }
+            #name1_section1 , #name2_section1{
+                font-size: 90px;
+            }
+            .header_elements{
+                font-size: 12px;
+            }
+            nav{
+                gap: 7px;
+            }
+            #mylogo{
+                height: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="content_page">
+        <div class="star-container" id="starContainer"></div>
+
+        <header id="header">
+        <a href="#home"><img src="./images/mylogo.png" id="mylogo" alt="mylogo"></a>
+        <nav aria-label="Main Navigation">
+            <a href="#home" id="header_homet" class="header_elements">Home.</a>
+            <a href="#about" id="header_about" class="header_elements">About.</a>
+            <a href="#skills" id="header_skills" class="header_elements">Skills.</a>
+            <a href="#projects" id="header_projects" class="header_elements">Projects.</a>
+            <a href="#contact" id="header_contact" class="header_elements">Contact.</a>
+        </nav>
+    </header>
+
+    <main id="content_page">
+        <section id="home">
+            <!-- <img src="./images/satellite.png" id="section1_sat" alt=""> -->
+            <img src="./images/spinner.png" id="background_section1"  alt="">
+            <img src="./images/myimage2.jpg" id="myimage" alt="">
+            <h1 id="name1_section1">Antony</h1>
+            <h1 id="name2_section1">Zharon</h1>
+        </section>
+
+        <section id="about">About Me Section</section>
+        <section id="skills">Skills Section</section>
+        <section id="projects">Projects</section>
+        <section id="contact">contact</section>
+
+    </main>
+
+        
+
+        <script>
+            const numberOfStars = 30;
+            const starContainer = document.getElementById('starContainer'); 
+
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+
+                const x = Math.random() * window.innerWidth;
+                star.style.left = `${x}px`;
+
+                const duration = Math.random() * 5 + 10;
+                star.style.animationDuration = `${duration}s`;
+
+                const delay = Math.random() * duration;
+                star.style.animationDelay = `-${delay}s`;
+
+                starContainer.appendChild(star);
+            }
+        </script>
+
+        <script>
+            var content_page = document.getElementById('content_page');
+            content_page.style.opacity = '0';
+            content_page.style.display = 'block';
+            setTimeout(function() {
+                content_page.style.transition = 'opacity 2s ease';
+                content_page.style.opacity = '1';
+            }, 500);
+        </script>
+         
+        <script>
+            window.onload = function() {
+                const homeSection = document.getElementById('home');
+                if (homeSection) {
+                    homeSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            };
+        </script>
+        
+       
+       
+        <script>
+            const antony = document.getElementById("name1_section1");
+            const zharon = document.getElementById("name2_section1");
+        
+            const initialLeftAntony = 40;
+            const targetLeftAntony = 0; 
+            const scrollFactorAntony = 0.1;
+            let currentLeftAntony = initialLeftAntony; 
+        
+            const initialLeftZharon = 65; 
+            const targetLeftZharon = 100; 
+            const scrollFactorZharon = 0.1; 
+            let currentLeftZharon = initialLeftZharon;
+        
+            function smoothScroll() {
+                const scrollPosition = window.scrollY * scrollFactorAntony;
+                const newLeftAntony = Math.max(initialLeftAntony - scrollPosition, targetLeftAntony);
+                currentLeftAntony += (newLeftAntony - currentLeftAntony) * 0.1;
+        
+                antony.style.left = `${currentLeftAntony}%`;
+        
+                const newLeftZharon = Math.min(initialLeftZharon + scrollPosition, targetLeftZharon);
+                currentLeftZharon += (newLeftZharon - currentLeftZharon) * 0.1;
+        
+                zharon.style.left = `${currentLeftZharon}%`;
+        
+                requestAnimationFrame(smoothScroll);
+            }
+        
+            smoothScroll();
+        </script>
+    </div>
+
+</body>
+</html>
