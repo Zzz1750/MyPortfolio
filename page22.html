@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Changa:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Changa:wght@200..800&family=Delius+Swash+Caps&display=swap" rel="stylesheet">
     <title>Antony Zharon</title>
     <style>
      
@@ -57,7 +57,6 @@
             justify-content: center;
             align-items: center;
             font-size: 2rem;
-            
             background-color: transparent;
             z-index: 1;
             position: relative;
@@ -198,6 +197,75 @@
 
         }
 
+         /*section3*/
+        .box_section2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 40px;
+            color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            font-size: 18px;
+            width: 150px; 
+            height: 160px; 
+            background-color: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s ease; /* Smooth transition */
+            transform-origin: center; 
+        }
+        .box_section2:hover{
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            transform: scale(1.05); 
+        }
+
+        .container_section2 {
+            display: grid;
+            gap: 30px;
+            padding: 8px;
+            overflow: hidden;
+            position: absolute;
+            text-align: center;
+            top: 20%;
+            }
+
+        #section3_heading{
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            font-family: "Chakra Petch", sans-serif;
+        }
+
+        
+
+        @media (min-width: 768px) {
+            .container_section2 {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .container_section2 {
+                grid-template-columns: repeat(3, 1fr); 
+                gap: 10px;
+                top: 10%;
+            }
+
+            .box_section2{
+                font-size: 0.8rem; /* Smaller font */
+                height: 120px;
+                width: 100px;
+                max-width: 120px; /* Smaller box width */
+                box-sizing: border-box;
+            }
+            #section3_heading{
+                font-size: 23px;
+                top: 5%;
+            }
+        }
+
+
 
         @media (max-width: 600px) { 
             #myimage {
@@ -219,31 +287,19 @@
             #mylogo{
                 height: 15px;
             }
-        }
-
-            /*section2*/
             #aboutme1_section2{
-                font-size: 20px;
-                line-height: 30px;
-                width: 70%;
+                font-size: 1.5rem;
+                line-height: 35px;
+                width: 80%;
             }
             #aboutme2_section2{
-                font-size: 11px;
-                width: 50%;
+                font-size: 13px;
+                line-height: 18px;
+                width: 60%;
+                top: 70%;
                 left: 60%;
             }
-
-            /*section3*/
-            #container_section2{
-                position: absolute;
-                left: 10%;
-                top: 40%;
-                transform: translate(-50%,-50%);
-                height: 200px;
-                width: 300px;
-                border: 2px solid white;
-                z-index: 5;
-            }
+        }
         
     </style>
 </head>
@@ -283,20 +339,21 @@
 
         <!-- section3 -->
         <section id="skills">
-            <div id="container_section2">
-                <!-- <div class="box_section3">HTML</div>
-                <div class="box_section3">CSS</div>
-                <div class="box_section3">Java Script</div>
-                <div class="box_section3">Blender</div>
-                <div class="box_section3">Java</div>
-                <div class="box_section3">C#</div>
-                <div class="box_section3">Android Studio</div>
-                <div class="box_section3">AWS </div>
-                <div class="box_section3">Python</div>
-                <div class="box_section3">Cyber Security</div>
-                <div class="box_section3">Unity</div>
-                <div class="box_section3">Premiere Pro</div>
-                <div class="box_section3">Canva</div> -->
+            <h1 id="section3_heading">What i <span style="color: black; background-color:white; padding: 3px 8px 3px 8px;  font-family: Delius Swash Caps, cursive;"><b>do</b></span></h1>
+            <div class="container_section2">
+                <div class="box_section2">HTML</div>
+                <div class="box_section2">CSS</div>
+                <div class="box_section2">Java Script</div>
+                <div class="box_section2">Blender</div>
+                <div class="box_section2">C#</div>
+                <div class="box_section2">Java</div>
+                <div class="box_section2">Android Studio</div>
+                <div class="box_section2">AWS </div>
+                <div class="box_section2">Python</div>
+                <div class="box_section2">Cyber Security</div>
+                <div class="box_section2">Unity</div>
+                <div class="box_section2">Premiere Pro</div>
+                <div class="box_section2">Canva</div>
             </div>
         </section>
         <section id="projects">Projects</section>

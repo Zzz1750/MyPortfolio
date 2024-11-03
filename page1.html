@@ -3,60 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grid Layout with Boxes</title>
+    <title>My Portfolio</title>
     <style>
-        /* Basic Reset */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
         body {
             font-family: Arial, sans-serif;
-            background-color: black;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
         }
 
-        .container_section2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 60px;
-            max-width: 1000px;
-            position: relative;
-            margin: 0 auto;
-            margin-top: 50px;
+        .certificate-section {
+            text-align: center;
+            margin: 20px 0;
         }
 
-        .box_section2 {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding-bottom: 60px;
-            color: #ffffffe5;
-            border-radius: 8px;
-            font-size: 1.2em;
-            width: 180px;
-            height: 200px;
-            background-color: transparent;
-            border: 2px solid rgba(255, 255, 255, 0.555);
+        .certificate-thumbnail {
+            width: 200px; /* Adjust size as needed */
+            cursor: pointer;
+            border: 2px solid #ddd; /* Optional styling */
+            border-radius: 4px;
+            transition: transform 0.3s;
+        }
+
+        .certificate-thumbnail:hover {
+            transform: scale(1.05); /* Slight zoom effect on hover */
+        }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%; /* Adjust size as needed */
+            max-width: 700px; /* Maximum size */
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <div class="container_section2">
-        <div class="box_section2">HTML</div>
-        <div class="box_section2">CSS</div>
-        <div class="box_section2">Java Script</div>
-        <div class="box_section2">Blender</div>
-        <div class="box_section2">Java</div>
-        <div class="box_section2">C#</div>
-        <div class="box_section2">Android Studio</div>
-        <div class="box_section2">AWS </div>
-        <div class="box_section2">Python</div>
-        <div class="box_section2">Cyber Security</div>
-        <div class="box_section2">Unity</div>
-        <div class="box_section2">Premiere Pro</div>
-        <div class="box_section2">Canva</div>
+
+    <!-- Certificate Section -->
+    <div class="certificate-section">
+        <h2>My Certificate</h2>
+        <img src="path/to/certificate-thumbnail.jpg" alt="Certificate" class="certificate-thumbnail" onclick="openModal()">
     </div>
+
+    <!-- Modal -->
+    <div id="certificateModal" class="modal" onclick="closeModal()">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage" src="./images/moon.png" alt="Certificate">
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById("certificateModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("certificateModal").style.display = "none";
+        }
+
+        // Close modal when clicking outside of the modal content
+        window.onclick = function(event) {
+            if (event.target === document.getElementById("certificateModal")) {
+                closeModal();
+            }
+        }
+    </script>
+
 </body>
 </html>
